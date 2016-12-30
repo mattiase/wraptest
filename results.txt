@@ -1,30 +1,30 @@
-			XTerm	Terminal  iTerm   st
-wrap works              yes	yes	  yes	  yes
-wrap is deferred        yes	yes	  yes	  yes
-CR works at margin      yes	yes	  yes	  yes
-BS works at margin      yes	yes	  yes	  yes
-TAB wraps at margin     no	no 	  no 	  no 
-TAB cancels wrap        no	yes	  no 	  no 
-NL cancels wrap         yes	yes	  no 	  yes
-NUL cancels wrap        no	no 	  no 	  no 
-BEL cancels wrap        no	no 	  no 	  no 
-RI cancels wrap         yes	yes	  no 	  yes
-SGR cancels wrap        no	no 	  no 	  no 
-SM cancels wrap         no	no 	  no 	  no 
-CUP cancels wrap        yes	yes	  yes	  yes
-CUF cancels wrap        yes	yes	  yes	  yes
-EL cancels wrap         yes	no 	  no 	  no 
-ED cancels wrap         yes	no 	  no 	  no 
-DCH cancels wrap        yes	no 	  no 	  no 
-ICH cancels wrap        yes	no 	  no 	  no 
-ECH cancels wrap        yes	no 	  no 	  no 
-CPR cancels wrap        no	no 	  no 	  no 
-DECSC cancels wrap      no	no 	  no 	  no 
-DECRC restores wrap     no	no 	  no 	  no 
+			XTerm	Terminal  iTerm   st	 gterm
+wrap works              yes	yes	  yes	  yes	 yes
+wrap is deferred        yes	yes	  yes	  yes	 yes
+CR works at margin      yes	yes	  yes	  yes	 yes
+BS works at margin      yes	yes	  yes	  yes	 yes
+TAB wraps at margin     no	no 	  no 	  no 	 no 
+TAB cancels wrap        no	yes	  no 	  no 	 no 
+NL cancels wrap         yes	yes	  no 	  yes	 yes
+NUL cancels wrap        no	no 	  no 	  no 	 no 
+BEL cancels wrap        no	no 	  no 	  no 	 no 
+RI cancels wrap         yes	yes	  no 	  yes	 yes
+SGR cancels wrap        no	no 	  no 	  no 	 no 
+SM cancels wrap         no	no 	  no 	  no 	 no 
+CUP cancels wrap        yes	yes	  yes	  yes	 yes
+CUF cancels wrap        yes	yes	  yes	  yes	 yes
+EL cancels wrap         yes	no 	  no 	  no 	 no 
+ED cancels wrap         yes	no 	  no 	  no 	 yes
+DCH cancels wrap        yes	no 	  no 	  no 	 yes
+ICH cancels wrap        yes	no 	  no 	  no 	 yes
+ECH cancels wrap        yes	no 	  no 	  no 	 yes
+CPR cancels wrap        no	no 	  no 	  no 	 no 
+DECSC cancels wrap      no	no 	  no 	  no 	 no 
+DECRC restores wrap     no	no 	  no 	  no 	 no 
 
 Versions:
 XTerm 326
 Terminal.app 2.6.1 (361.1)
 iTerm 3.0.13
 st 0.7
-
+gterm: GNOME-terminal 3.16.2 (VTE 0.40.3)
