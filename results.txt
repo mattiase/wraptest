@@ -1,33 +1,60 @@
-                      XTerm   Termapp  iTerm   st     Gterm  rxvt  cygw  putty
-wrap works            yes     yes      yes     yes    yes    yes   yes   yes
-wrap is deferred      yes     yes      yes     yes    yes    yes   yes   yes
-CR works at margin    yes     yes      yes     yes    yes    yes   yes   yes
-BS works at margin    yes     yes      yes     yes    yes    no    no    no
-TAB wraps at margin   no      no       no      no     no     no    no    no
-TAB cancels wrap      no      yes      no      no     no     no    no    no
-NL cancels wrap       yes     yes      no      yes    yes    yes   yes   yes
-NUL cancels wrap      no      no       no      no     no     no    no    no
-BEL cancels wrap      no      no       no      no     no     no    no    no
-RI cancels wrap       yes     yes      no      yes    yes    yes   yes   yes
-SGR cancels wrap      no      no       no      no     no     no    no    no
-SM cancels wrap       no      no       no      no     no     no    no    no
-CUP cancels wrap      yes     yes      yes     yes    yes    yes   yes   yes
-CUF cancels wrap      yes     yes      yes     yes    yes    yes   yes   yes
-EL cancels wrap       yes     no       no      no     no     yes   no    no
-ED cancels wrap       yes     no       no      no     yes    yes   no    no
-DCH cancels wrap      yes     no       no      no     yes    yes   no    no
-ICH cancels wrap      yes     no       no      no     yes    yes   no    no
-ECH cancels wrap      yes     no       no      no     yes    yes   no    no
-CPR cancels wrap      no      no       no      no     no     no    no    no
-DECSC cancels wrap    no      no       no      no     no     no    no    no
-DECRC restores wrap   no      no       no      no     no     no    yes   yes
+                     XTerm Term  iTerm st    Gterm rxvt  cygw  PuTTY Kons
+wrap works           yes   yes   yes   yes   yes   yes   yes   yes   yes
+wrap is deferred     yes   yes   yes   yes   yes   yes   yes   yes   yes
+CPR beyond last col  no    no    no    no    no    no    no    no    yes
+CR works at margin   yes   yes   yes   yes   yes   yes   yes   yes   yes
+BS works at margin   yes   yes   yes   yes   yes   no    no    no    no 
+TAB wraps at margin  no    no    no    no    no    no    no    no    no 
+TAB cancels wrap     no    yes   no    no    no    no    no    no    no 
+NL cancels wrap      yes   yes   no    yes   yes   yes   yes   yes   no 
+NUL cancels wrap     no    no    no    no    no    no    no    no    no 
+BEL cancels wrap     no    no    no    no    no    no    no    no    no 
+RI cancels wrap      yes   yes   no    yes   yes   yes   yes   yes   no 
+SGR cancels wrap     no    no    no    no    no    no    no    no    no 
+SM cancels wrap      no    no    no    no    no    no    no    no    no 
+CUP cancels wrap     yes   yes   yes   yes   yes   yes   yes   yes   yes
+CUF cancels wrap     yes   yes   yes   yes   yes   yes   yes   yes   yes
+EL cancels wrap      yes   no    no    no    no    yes   no    no    no 
+ED cancels wrap      yes   no    no    no    yes   yes   no    no    no 
+DCH cancels wrap     yes   no    no    no    yes   yes   no    no    no 
+ICH cancels wrap     yes   no    no    no    yes   yes   no    no    no 
+ECH cancels wrap     yes   no    no    no    yes   yes   no    no    no 
+CPR cancels wrap     no    no    no    no    no    no    no    no    no 
+DECSC cancels wrap   no    no    no    no    no    no    no    no    no 
+DECRC restores wrap  no    no    no    no    no    no    yes   yes   no 
 
-Versions:
-XTerm 326
-Terminal.app 2.6.1 (361.1)
-iTerm 3.0.13
-st 0.7
-GNOME-terminal 3.16.2 (VTE 0.40.3)
-rxvt 2.7.10
-cygwin mintty 1.0.3
-PuTTY 0.67
+Columns:
+XTerm  Xterm 326
+Term   Terminal.app 2.6.1 (361.1)
+iTerm  iTerm2 3.0.13
+st     suckless st 0.7
+Gterm  GNOME-terminal 3.16.2 (VTE 0.40.3)
+rxvt   rxvt 2.7.10
+cygw   cygwin mintty 1.0.3
+PuTTY  PuTTY 0.67
+Kons   Konsole 1.6.4
+
+Notes:
+
+- mintty is based on PuTTY, so it is not surprising that the results are
+  identical.
+
+- rxvt, PuTTY and mintty all treat BS in the wrap state in the same way:
+  no cursor movement (the BS is "absorbed"), but wrap state is cancelled.
+  When the cursor is changed from a block to a vertical line, the wrap
+  state is indicated by a cursor position to the right of the last column.
+  It is still reported (by CPR) as being in the last column, however,
+  and EL 0 still clears the last column of that line.
+ 
+- GNOME-terminal's EL behaviour is an explicit hack to work around a
+  problem with GNU grep, which sometimes emits EL in the wrap state
+  (https://bugzilla.gnome.org/show_bug.cgi?id=740789).
+
+- iTerm2 shows its cursor in a narrow "gutter" to the right of the last
+  column when in wrap state. EL 0 does then not clear the last column.
+
+- Konsole visibly wraps the cursor to the first column on the next
+  line in the wrap state, but reports its position as being one column
+  to the right of the last column on the original line. Many
+  operations, such as EL 0, have no effect in this state. (When in the wrap
+  state from the last line, the cursor just disappears; no scrolling occurs.)

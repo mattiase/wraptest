@@ -40,6 +40,7 @@ typedef enum {
 
 static tristate_t wrap_works = no_info;
 static tristate_t wrap_is_deferred = no_info;
+static tristate_t cpr_beyond_last_col = no_info;
 static tristate_t cr_works_at_margin = no_info;
 static tristate_t bs_works_at_margin = no_info;
 static tristate_t tab_wraps_at_margin = no_info;
@@ -62,7 +63,7 @@ static tristate_t decsc_cancels_wrap = no_info;
 static tristate_t decrc_restores_wrap = no_info;
 
 static void do_tests(void) {
-  int r, c, width;
+  int r, c, width, wrap_col;
   wr("\33[?7h");		/* Set auto-wrap, just in case. */
   wr("\33[2J");			/* Clear screen. */
   cup(1, 999);
@@ -77,8 +78,11 @@ static void do_tests(void) {
   /* Check that wrap is deferred after writing to the last column. */
   cup(1, width - 1);
   wr("AB");
-  getpos(&r, &c);
-  wrap_is_deferred = (r == 1 && c == width);
+  getpos(&r, &wrap_col);
+  wrap_is_deferred = (r == 1 && wrap_col >= width);
+
+  /* Whether CPR reports a position beyond the last column in the wrap state. */
+  cpr_beyond_last_col = (wrap_col > width);
 
   /* Check that CR works after writing to the last column. */
   cup(1, width - 1);
@@ -102,7 +106,7 @@ static void do_tests(void) {
   cup(1, width - 1);
   wr("AB\tC");
   getpos(&r, &c);
-  tab_cancels_wrap = (r == 1 && c == width);
+  tab_cancels_wrap = (r == 1 && c >= width);
 
   /* Check that NL cancels the wrap state. */
   cup(1, width - 1);
@@ -114,31 +118,31 @@ static void do_tests(void) {
   cup(1, width - 1);
   wr("AB%cC", 0);
   getpos(&r, &c);
-  nul_cancels_wrap = (r == 1 && c == width);
+  nul_cancels_wrap = (r == 1 && c >= width);
 
   /* Check whether BEL cancels the wrap state. */
   cup(1, width - 1);
   wr("AB\aC");
   getpos(&r, &c);
-  bel_cancels_wrap = (r == 1 && c == width);
+  bel_cancels_wrap = (r == 1 && c >= width);
 
   /* Check whether RI (Reverse Index) cancels the wrap state. */
   cup(2, width - 1);
   wr("AB\33MC");
   getpos(&r, &c);
-  ri_cancels_wrap = (r == 1 && c == width);
+  ri_cancels_wrap = (r == 1 && c >= width);
 
   /* Check whether SGR (Select Graphic Rendition) cancels the wrap state. */
   cup(1, width - 1);
   wr("AB\33[mC");
   getpos(&r, &c);
-  sgr_cancels_wrap = (r == 1 && c == width);
+  sgr_cancels_wrap = (r == 1 && c >= width);
 
   /* Check whether SM (Set Mode) cancels the wrap state. */
   cup(1, width - 1);
   wr("AB\33[hC");
   getpos(&r, &c);
-  sm_cancels_wrap = (r == 1 && c == width);
+  sm_cancels_wrap = (r == 1 && c >= width);
 
   /* Check whether CUP (Set Cursor Position) cancels the wrap state. */
   cup(1, width - 1);
@@ -146,13 +150,13 @@ static void do_tests(void) {
   cup(1, width);
   wr("C");
   getpos(&r, &c);
-  cup_cancels_wrap = (r == 1 && c == width);
+  cup_cancels_wrap = (r == 1 && c >= width);
 
   /* Check whether CUF (Cursor Forward) cancels the wrap state. */
   cup(1, width - 1);
   wr("AB\33[CC");
   getpos(&r, &c);
-  cuf_cancels_wrap = (r == 1 && c == width);
+  cuf_cancels_wrap = (r == 1 && c >= width);
 
   /* Check whether EL (Erase in Line) cancels the wrap state. */
   cup(1, width - 1);
@@ -164,26 +168,26 @@ static void do_tests(void) {
   cup(1, width - 1);
   wr("AB\33[JC");
   getpos(&r, &c);
-  ed_cancels_wrap = (r == 1 && c == width);
+  ed_cancels_wrap = (r == 1 && c >= width);
 
   /* Check whether DCH (Delete Character) cancels the wrap state. */
   cup(1, width - 1);
   wr("AB\33[PC");
   getpos(&r, &c);
-  dch_cancels_wrap = (r == 1 && c == width);
+  dch_cancels_wrap = (r == 1 && c >= width);
 
   if (!VT100_ONLY) {
     /* Check whether ICH (Insert Character) cancels the wrap state. */
     cup(1, width - 1);
     wr("AB\33[@C");
     getpos(&r, &c);
-    ich_cancels_wrap = (r == 1 && c == width);
+    ich_cancels_wrap = (r == 1 && c >= width);
 
     /* Check whether ECH (Erase Character) cancels the wrap state. */
     cup(1, width - 1);
     wr("AB\33[XC");
     getpos(&r, &c);
-    ech_cancels_wrap = (r == 1 && c == width);
+    ech_cancels_wrap = (r == 1 && c >= width);
   }
 
   /* Check whether CPR (Cursor Position Report) cancels the wrap state. */
@@ -192,13 +196,13 @@ static void do_tests(void) {
   getpos(&r, &c);
   wr("C");
   getpos(&r, &c);
-  cpr_cancels_wrap = (r == 1 && c == width);
+  cpr_cancels_wrap = (r == 1 && c >= width);
 
   /* Check whether DECSC (Save Cursor) cancels the wrap state. */
   cup(1, width - 1);
   wr("AB\33" "7" "C");
   getpos(&r, &c);
-  decsc_cancels_wrap = (r == 1 && c == width);
+  decsc_cancels_wrap = (r == 1 && c >= width);
 
   /* Check whether DECRC (Restore Cursor) restores the wrap state. */
   cup(1, width - 1);
@@ -215,28 +219,29 @@ static void rep(const char *name, tristate_t value) {
 
 static void report(void) {
   wr("\33[H\33[2J");
-  rep("wrap works", wrap_works);
-  rep("wrap is deferred", wrap_is_deferred);
-  rep("CR works at margin", cr_works_at_margin);
-  rep("BS works at margin", bs_works_at_margin);
-  rep("TAB wraps at margin", tab_wraps_at_margin);
-  rep("TAB cancels wrap", tab_cancels_wrap);
-  rep("NL cancels wrap", nl_cancels_wrap);
-  rep("NUL cancels wrap", nul_cancels_wrap);
-  rep("BEL cancels wrap", bel_cancels_wrap);
-  rep("RI cancels wrap", ri_cancels_wrap);
-  rep("SGR cancels wrap", sgr_cancels_wrap);
-  rep("SM cancels wrap", sm_cancels_wrap);
-  rep("CUP cancels wrap", cup_cancels_wrap);
-  rep("CUF cancels wrap", cuf_cancels_wrap);
-  rep("EL cancels wrap", el_cancels_wrap);
-  rep("ED cancels wrap", ed_cancels_wrap);
-  rep("DCH cancels wrap", dch_cancels_wrap);
-  rep("ICH cancels wrap", ich_cancels_wrap);
-  rep("ECH cancels wrap", ech_cancels_wrap);
-  rep("CPR cancels wrap", cpr_cancels_wrap);
-  rep("DECSC cancels wrap", decsc_cancels_wrap);
-  rep("DECRC restores wrap", decrc_restores_wrap);
+  rep("1.  wrap works", wrap_works);
+  rep("2.  wrap is deferred", wrap_is_deferred);
+  rep("3.  CPR beyond last column", cpr_beyond_last_col);
+  rep("4.  CR works at margin", cr_works_at_margin);
+  rep("5.  BS works at margin", bs_works_at_margin);
+  rep("6.  TAB wraps at margin", tab_wraps_at_margin);
+  rep("7.  TAB cancels wrap", tab_cancels_wrap);
+  rep("8.  NL cancels wrap", nl_cancels_wrap);
+  rep("9.  NUL cancels wrap", nul_cancels_wrap);
+  rep("10. BEL cancels wrap", bel_cancels_wrap);
+  rep("11. RI cancels wrap", ri_cancels_wrap);
+  rep("12. SGR cancels wrap", sgr_cancels_wrap);
+  rep("13. SM cancels wrap", sm_cancels_wrap);
+  rep("14. CUP cancels wrap", cup_cancels_wrap);
+  rep("15. CUF cancels wrap", cuf_cancels_wrap);
+  rep("16. EL cancels wrap", el_cancels_wrap);
+  rep("17. ED cancels wrap", ed_cancels_wrap);
+  rep("18. DCH cancels wrap", dch_cancels_wrap);
+  rep("19. ICH cancels wrap", ich_cancels_wrap);
+  rep("20. ECH cancels wrap", ech_cancels_wrap);
+  rep("21. CPR cancels wrap", cpr_cancels_wrap);
+  rep("22. DECSC cancels wrap", decsc_cancels_wrap);
+  rep("23. DECRC restores wrap", decrc_restores_wrap);
 }
 
 int main(void) {
