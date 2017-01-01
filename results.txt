@@ -1,30 +1,30 @@
-                     XTerm Term  iTerm st    Gterm rxvt  cygw  PuTTY Kons
-wrap works           yes   yes   yes   yes   yes   yes   yes   yes   yes
-wrap is deferred     yes   yes   yes   yes   yes   yes   yes   yes   yes
-CPR beyond last col  no    no    no    no    no    no    no    no    yes
-CR works at margin   yes   yes   yes   yes   yes   yes   yes   yes   yes
-BS works at margin   yes   yes   yes   yes   yes   no    no    no    no 
-TAB wraps at margin  no    no    no    no    no    no    no    no    no 
-TAB cancels wrap     no    yes   no    no    no    no    no    no    no 
-NL cancels wrap      yes   yes   no    yes   yes   yes   yes   yes   no 
-NUL cancels wrap     no    no    no    no    no    no    no    no    no 
-BEL cancels wrap     no    no    no    no    no    no    no    no    no 
-RI cancels wrap      yes   yes   no    yes   yes   yes   yes   yes   no 
-SGR cancels wrap     no    no    no    no    no    no    no    no    no 
-SM cancels wrap      no    no    no    no    no    no    no    no    no 
-CUP cancels wrap     yes   yes   yes   yes   yes   yes   yes   yes   yes
-CUF cancels wrap     yes   yes   yes   yes   yes   yes   yes   yes   yes
-EL cancels wrap      yes   no    no    no    no    yes   no    no    no 
-ED cancels wrap      yes   no    no    no    yes   yes   no    no    no 
-DCH cancels wrap     yes   no    no    no    yes   yes   no    no    no 
-ICH cancels wrap     yes   no    no    no    yes   yes   no    no    no 
-ECH cancels wrap     yes   no    no    no    yes   yes   no    no    no 
-CPR cancels wrap     no    no    no    no    no    no    no    no    no 
-DECSC cancels wrap   no    no    no    no    no    no    no    no    no 
-DECRC restores wrap  no    no    no    no    no    no    yes   yes   no 
+                     XTerm Term  iTerm st    Gterm rxvt  cygw  PuTTY Kons Linux
+wrap works           yes   yes   yes   yes   yes   yes   yes   yes   yes  yes
+wrap is deferred     yes   yes   yes   yes   yes   yes   yes   yes   yes  yes
+CPR beyond last col  no    no    no    no    no    no    no    no    yes  no
+CR works at margin   yes   yes   yes   yes   yes   yes   yes   yes   yes  yes
+BS works at margin   yes   yes   yes   yes   yes   no    no    no    no   yes
+TAB wraps at margin  no    no    no    no    no    no    no    no    no   no
+TAB cancels wrap     no    yes   no    no    no    no    no    no    no   no
+NL cancels wrap      yes   yes   no    yes   yes   yes   yes   yes   no   yes
+NUL cancels wrap     no    no    no    no    no    no    no    no    no   no
+BEL cancels wrap     no    no    no    no    no    no    no    no    no   no
+RI cancels wrap      yes   yes   no    yes   yes   yes   yes   yes   no   yes
+SGR cancels wrap     no    no    no    no    no    no    no    no    no   no
+SM cancels wrap      no    no    no    no    no    no    no    no    no   no
+CUP cancels wrap     yes   yes   yes   yes   yes   yes   yes   yes   yes  yes
+CUF cancels wrap     yes   yes   yes   yes   yes   yes   yes   yes   yes  yes
+EL cancels wrap      yes   no    no    no    no    yes   no    no    no   yes
+ED cancels wrap      yes   no    no    no    yes   yes   no    no    no   yes
+DCH cancels wrap     yes   no    no    no    yes   yes   no    no    no   yes
+ICH cancels wrap     yes   no    no    no    yes   yes   no    no    no   yes
+ECH cancels wrap     yes   no    no    no    yes   yes   no    no    no   yes
+CPR cancels wrap     no    no    no    no    no    no    no    no    no   no
+DECSC cancels wrap   no    no    no    no    no    no    no    no    no   no
+DECRC restores wrap  no    no    no    no    no    no    yes   yes   no   no
 
 Columns:
-XTerm  Xterm 326
+XTerm  XTerm 326
 Term   Terminal.app 2.6.1 (361.1)
 iTerm  iTerm2 3.0.13
 st     suckless st 0.7
@@ -33,6 +33,7 @@ rxvt   rxvt 2.7.10
 cygw   cygwin mintty 1.0.3
 PuTTY  PuTTY 0.67
 Kons   Konsole 1.6.4
+Linux  Linux 2.6.39 console 
 
 Notes:
 
