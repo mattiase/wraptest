@@ -1,39 +1,40 @@
-                     XTerm Term  iTerm st    Gterm rxvt  cygw  PuTTY Kons Linux
-wrap works           yes   yes   yes   yes   yes   yes   yes   yes   yes  yes
-wrap is deferred     yes   yes   yes   yes   yes   yes   yes   yes   yes  yes
-CPR beyond last col  no    no    no    no    no    no    no    no    yes  no
-CR works at margin   yes   yes   yes   yes   yes   yes   yes   yes   yes  yes
-BS works at margin   yes   yes   yes   yes   yes   no    no    no    no   yes
-TAB wraps at margin  no    no    no    no    no    no    no    no    no   no
-TAB cancels wrap     no    yes   no    no    no    no    no    no    no   no
-NL cancels wrap      yes   yes   no    yes   yes   yes   yes   yes   no   yes
-NUL cancels wrap     no    no    no    no    no    no    no    no    no   no
-BEL cancels wrap     no    no    no    no    no    no    no    no    no   no
-RI cancels wrap      yes   yes   no    yes   yes   yes   yes   yes   no   yes
-SGR cancels wrap     no    no    no    no    no    no    no    no    no   no
-SM cancels wrap      no    no    no    no    no    no    no    no    no   no
-CUP cancels wrap     yes   yes   yes   yes   yes   yes   yes   yes   yes  yes
-CUF cancels wrap     yes   yes   yes   yes   yes   yes   yes   yes   yes  yes
-EL cancels wrap      yes   no    no    no    no    yes   no    no    no   yes
-ED cancels wrap      yes   no    no    no    yes   yes   no    no    no   yes
-DCH cancels wrap     yes   no    no    no    yes   yes   no    no    no   yes
-ICH cancels wrap     yes   no    no    no    yes   yes   no    no    no   yes
-ECH cancels wrap     yes   no    no    no    yes   yes   no    no    no   yes
-CPR cancels wrap     no    no    no    no    no    no    no    no    no   no
-DECSC cancels wrap   no    no    no    no    no    no    no    no    no   no
-DECRC restores wrap  no    no    no    no    no    no    yes   yes   no   no
+                     XTe Lin T.a iT2 st  GNO rxv cyg PuT Kon DEC
+wrap works           y   y   y   y   y   y   y   y   y   y   y
+wrap is deferred     y   y   y   y   y   y   y   y   y   y   y
+CPR beyond last col  n   n   n   n   n   n   n   n   n   y   n
+CR works at margin   y   y   y   y   y   y   y   y   y   y   y
+BS works at margin   y   y   y   y   y   y   n   n   n   n   y
+TAB wraps at margin  n   n   n   n   n   n   n   n   n   n   n
+TAB cancels wrap     n   n   y   n   n   n   n   n   n   n   y
+NL cancels wrap      y   y   y   n   y   y   y   y   y   n   y
+NUL cancels wrap     n   n   n   n   n   n   n   n   n   n   n
+BEL cancels wrap     n   n   n   n   n   n   n   n   n   n   n
+RI cancels wrap      y   y   y   n   y   y   y   y   y   n   y
+SGR cancels wrap     n   n   n   n   n   n   n   n   n   n   n
+SM cancels wrap      n   n   n   n   n   n   n   n   n   n   n
+CUP cancels wrap     y   y   y   y   y   y   y   y   y   y   y
+CUF cancels wrap     y   y   y   y   y   y   y   y   y   y   y
+EL cancels wrap      y   y   n   n   n   n   y   n   n   n   y
+ED cancels wrap      y   y   n   n   n   y   y   n   n   n   y
+DCH cancels wrap     y   y   n   n   n   y   y   n   n   n   y
+ICH cancels wrap     y   y   n   n   n   y   y   n   n   n   y
+ECH cancels wrap     y   y   n   n   n   y   y   n   n   n   y
+CPR cancels wrap     n   n   n   n   n   n   n   n   n   n   n
+DECSC cancels wrap   n   n   n   n   n   n   n   n   n   n   n
+DECRC restores wrap  n   n   n   n   n   n   n   y   y   n   y
 
 Columns:
-XTerm  XTerm 326
-Term   Terminal.app 2.6.1 (361.1)
-iTerm  iTerm2 3.0.13
-st     suckless st 0.7
-Gterm  GNOME-terminal 3.16.2 (VTE 0.40.3)
-rxvt   rxvt 2.7.10
-cygw   cygwin mintty 1.0.3
-PuTTY  PuTTY 0.67
-Kons   Konsole 1.6.4
-Linux  Linux 2.6.39 console 
+XTe  XTerm 326
+Lin  Linux 2.6.39 console
+T.a  Terminal.app 2.6.1 (361.1)
+iT2  iTerm2 3.0.13
+st   suckless st 0.7
+GNO  GNOME-terminal 3.16.2 (VTE 0.40.3)
+rxv  rxvt 2.7.10
+cyg  cygwin mintty 1.0.3
+PuT  PuTTY 0.67
+Kon  Konsole 1.6.4
+DEC  architectural behaviour of DEC terminals (DEC STD-070)
 
 Notes:
 
