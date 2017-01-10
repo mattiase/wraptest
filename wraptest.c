@@ -72,6 +72,7 @@ static tristate_t decrc_restores_decawm_off = no_info;
 static void do_tests(void) {
   int r, c, width, wrap_col;
   decawm(1);
+  wr("\33[20l");		/* Turn off LNM (automatic newline on CR). */
   wr("\33[2J");			/* Clear screen. */
   cup(1, 999);
   getpos(&r, &width);
