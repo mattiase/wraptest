@@ -23,6 +23,11 @@ static void cup(int row, int col) {
   wr("\33[%d;%dH", row, col);
 }
 
+/* Auto-Wrap Mode */
+static void decawm(int on) {
+  wr("\33[?7%c", on ? 'h' : 'l');
+}
+
 /* Request and return current cursor position. */
 static void getpos(int *row, int *col) {
   wr("\33[6n");
@@ -61,10 +66,12 @@ static tristate_t ech_cancels_wrap = no_info;
 static tristate_t cpr_cancels_wrap = no_info;
 static tristate_t decsc_cancels_wrap = no_info;
 static tristate_t decrc_restores_wrap = no_info;
+static tristate_t decrc_restores_decawm_on = no_info;
+static tristate_t decrc_restores_decawm_off = no_info;
 
 static void do_tests(void) {
   int r, c, width, wrap_col;
-  wr("\33[?7h");		/* Set auto-wrap, just in case. */
+  decawm(1);
   wr("\33[2J");			/* Clear screen. */
   cup(1, 999);
   getpos(&r, &width);
@@ -211,6 +218,29 @@ static void do_tests(void) {
   wr("Q\33" "8" "X");
   getpos(&r, &c);
   decrc_restores_wrap = (r == 2);
+
+  /* Check whether DECRC (Restore Cursor) restores DECAWM=on. */
+  cup(1, 1);
+  wr("\33" "7");
+  decawm(0);
+  wr("\33" "8"); 
+  cup(1, width - 1);
+  wr("ABC");
+  getpos(&r, &c);
+  decrc_restores_decawm_on = (r == 2);
+  decawm(1);
+
+  /* Check whether DECRC (Restore Cursor) restores DECAWM=off. */
+  cup(1, 1);
+  decawm(0);
+  wr("\33" "7");
+  decawm(1);
+  wr("\33" "8"); 
+  cup(1, width - 1);
+  wr("ABC");
+  getpos(&r, &c);
+  decrc_restores_decawm_off = (r == 1);
+  decawm(1);
 }
 
 static void rep(const char *name, tristate_t value) {
@@ -242,6 +272,8 @@ static void report(void) {
   rep("21. CPR cancels wrap", cpr_cancels_wrap);
   rep("22. DECSC cancels wrap", decsc_cancels_wrap);
   rep("23. DECRC restores wrap", decrc_restores_wrap);
+  rep("24. DECRC restores decawm=on", decrc_restores_decawm_on);
+  rep("25. DECRC restores decawm=off", decrc_restores_decawm_off);
 }
 
 int main(void) {

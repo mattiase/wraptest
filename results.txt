@@ -22,6 +22,8 @@ ECH cancels wrap     y   y   n   n   n   y   y   n   n   n   y	 y
 CPR cancels wrap     n   n   n   n   n   n   n   n   n   n   n	 n
 DECSC cancels wrap   n   n   n   n   n   n   n   n   n   n   n	 n
 DECRC restores wrap  n   n   n   n   n   n   n   y   y   n   y	 y
+DECRC restores AWM   y   n   n   y   n   n   n   n   n   n   n
+DECRC restores !AWM  y   n   n   y   n   n   n   n   n   n   n
 
 Columns:
 XTe  XTerm 326
