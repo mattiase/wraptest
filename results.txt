@@ -1,29 +1,29 @@
-                     XTe Lin T.a iT2 st  GNO rxv cyg PuT Kon DEC 510
-wrap works           y   y   y   y   y   y   y   y   y   y   y   y
-wrap is deferred     y   y   y   y   y   y   y   y   y   y   y	 y
-CPR beyond last col  n   n   n   n   n   n   n   n   n   y   n	 n
-CR works at margin   y   y   y   y   y   y   y   y   y   y   y	 y
-BS works at margin   y   y   y   y   y   y   n   n   n   n   y	 y
-TAB wraps at margin  n   n   n   n   n   n   n   n   n   n   n	 n
-TAB cancels wrap     n   n   y   n   n   n   n   n   n   n   y	 n
-NL cancels wrap      y   y   y   n   y   y   y   y   y   n   y	 y
-NUL cancels wrap     n   n   n   n   n   n   n   n   n   n   n	 n
-BEL cancels wrap     n   n   n   n   n   n   n   n   n   n   n	 n
-RI cancels wrap      y   y   y   n   y   y   y   y   y   n   y	 y
-SGR cancels wrap     n   n   n   n   n   n   n   n   n   n   n	 n
-SM cancels wrap      n   n   n   n   n   n   n   n   n   n   n	 n
-CUP cancels wrap     y   y   y   y   y   y   y   y   y   y   y	 y
-CUF cancels wrap     y   y   y   y   y   y   y   y   y   y   y	 y
-EL cancels wrap      y   y   n   n   n   n   y   n   n   n   y	 y
-ED cancels wrap      y   y   n   n   n   y   y   n   n   n   y	 y
-DCH cancels wrap     y   y   n   n   n   y   y   n   n   n   y	 y
-ICH cancels wrap     y   y   n   n   n   y   y   n   n   n   y	 n
-ECH cancels wrap     y   y   n   n   n   y   y   n   n   n   y	 y
-CPR cancels wrap     n   n   n   n   n   n   n   n   n   n   n	 n
-DECSC cancels wrap   n   n   n   n   n   n   n   n   n   n   n	 n
-DECRC restores wrap  n   n   n   n   n   n   n   y   y   n   y	 y
-DECRC restores AWM   y   n   n   y   n   n   n   n   n   n   n
-DECRC restores !AWM  y   n   n   y   n   n   n   n   n   n   n
+                     XTe Lin T.a iT2 st  GNO rxv cyg PuT Kon DEC 220 510
+wrap works           y   y   y   y   y   y   y   y   y   y   y   y   y  
+wrap is deferred     y   y   y   y   y   y   y   y   y   y   y   y   y  
+CPR beyond last col  n   n   n   n   n   n   n   n   n   y   n   n   n  
+CR works at margin   y   y   y   y   y   y   y   y   y   y   y   y   y  
+BS works at margin   y   y   y   y   y   y   n   n   n   n   y   y   y  
+TAB wraps at margin  n   n   n   n   n   n   n   n   n   n   n   n   n  
+TAB cancels wrap     n   n   y   n   n   n   n   n   n   n   y   y   n  
+NL cancels wrap      y   y   y   n   y   y   y   y   y   n   y   y   y  
+NUL cancels wrap     n   n   n   n   n   n   n   n   n   n   n   n   n  
+BEL cancels wrap     n   n   n   n   n   n   n   n   n   n   n   n   n  
+RI cancels wrap      y   y   y   n   y   y   y   y   y   n   y   y   y  
+SGR cancels wrap     n   n   n   n   n   n   n   n   n   n   n   n   n  
+SM cancels wrap      n   n   n   n   n   n   n   n   n   n   n   n   n  
+CUP cancels wrap     y   y   y   y   y   y   y   y   y   y   y   y   y  
+CUF cancels wrap     y   y   y   y   y   y   y   y   y   y   y   y   y  
+EL cancels wrap      y   y   n   n   n   n   y   n   n   n   y   y   y  
+ED cancels wrap      y   y   n   n   n   y   y   n   n   n   y   y   y  
+DCH cancels wrap     y   y   n   n   n   y   y   n   n   n   y   y   y  
+ICH cancels wrap     y   y   n   n   n   y   y   n   n   n   y   y   n  
+ECH cancels wrap     y   y   n   n   n   y   y   n   n   n   y   y   y  
+CPR cancels wrap     n   n   n   n   n   n   n   n   n   n   n   n   n  
+DECSC cancels wrap   n   n   n   n   n   n   n   n   n   n   n   n   n  
+DECRC restores wrap  n   n   n   n   n   n   n   y   y   n   y   y   y  
+DECRC restores AWM   y   n   n   y   n   n   n   n   n   n   n   n          
+DECRC restores !AWM  y   n   n   y   n   n   n   n   n   n   n   n      
 
 Columns:
 XTe  XTerm 326
@@ -38,6 +38,7 @@ PuT  PuTTY 0.67
 Kon  Konsole 1.6.4
 DEC  architectural behaviour of DEC terminals (DEC STD-070)
 510  real DEC VT510
+220  real DEC VT220
 
 Notes:
 
