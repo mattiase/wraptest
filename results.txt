@@ -39,6 +39,7 @@ Kon  Konsole 1.6.4
 DEC  architectural behaviour of DEC terminals (DEC STD-070)
 100  real DEC VT100
 220  real DEC VT220
+420  real DEC VT420
 510  real DEC VT510
 
 Notes:
