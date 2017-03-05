@@ -17,8 +17,9 @@ something that does not necessarily serve the best interest of their
 users.
 
 The sources for the following text are the actual terminals and DEC's
-internal reference documentation (DEC STD-070 Video Systems Reference
-Manual, Appendix D).
+internal reference documentation [DEC STD-070 Video Systems Reference
+Manual](http://bitsavers.trailing-edge.com/pdf/dec/standards/EL-SM070-00_DEC_STD_070_Video_Systems_Reference_Manual_Dec91.pdf)
+(71 MB).
 
 ## Basic VT line-wrapping rules
 
@@ -63,11 +64,29 @@ managed by these operations.
 
 ### Resetting operations
 
-The LCF is reset by many operations, generally those that may move the
-cursor but also some that do not. For example, the Cursor Position
-(CUP) command always clears the LCF whether or not the cursor is
-actually moved, but so does the Erase in Line (EL) command which does
-not move the cursor.
+The LCF is reset by the following operations (from STD-070):
+
+* Plain character output, as describe above
+* Set top and bottom margins (DECSTBM)
+* Change line width/height (DECSWL, DECDWL, DECDHL)
+* Set column mode, origin mode (DECSET DECCOLM, DECOM)
+* Reset column mode, origin mode, auto-wrap mode
+  (DECRST DECCOLM, DECOM, DECAWM)
+* Cursor up, down, forward, backward (CUU, CUD, CUF, CUB)
+* Cursor position (CUP, HVP)
+* Backspace (BS)
+* Horizontal tab, vertical tab (HT, VT)
+* Carriage return, line feed (CR, LF)
+* Form feed (FF)
+* Substitute (SUB)
+* Index, reverse index (IND, RI)
+* Next line (NEL)
+* Erase, delete, insert character (ECH, DCH, ICH)
+* Erase in line, in display (EL, ED)
+* Selective erase in line, in display (DECSEL, DECSED)
+
+Since this part of STD-070 is from 1985, operations introduced in
+newer terminals are not present in this list.
 
 ### Problematic operations
 
@@ -78,9 +97,9 @@ terminal, the long line will wrap, but if it contains an ASCII TAB
 character at an unfortunate position, the result can be the visual
 disappearance of a printing character.
 
-GNU Grep uses EL (Erase in Line) in an attempt to keep the background
-colour right when using colourised output. Since EL resets LCF, this
-can lead to characters going missing (see bug reports
+GNU Grep uses EL (Erase in Line) in an attempt to control the
+background colour. Since EL resets LCF, this can lead to characters
+going missing (see bug reports
 [here](https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=712024),
 [here](https://bugzilla.redhat.com/show_bug.cgi?id=1006310) and
 [here](https://debbugs.gnu.org/cgi/bugreport.cgi?bug=15444)).
