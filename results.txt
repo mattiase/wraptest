@@ -21,12 +21,12 @@ ICH cancels wrap     y   y   n   n   n   y   y   n   n   n   y   y   n   y   y  
 ECH cancels wrap     y   y   n   n   n   y   y   n   n   n   n   y   n   y   y   -   y   y   y  
 CPR cancels wrap     n   n   n   n   n   n   n   n   n   n   n   n   n   n   n   n   n   n   n  
 DECSC cancels wrap   n   n   n   n   n   n   n   n   n   n   n   n   n   n   n   n   n   n   n  
-DECRC restores wrap  n   n   n   n   n   n   n   y   y   n   n   n   n   n   y   n   y   y   y  
-DECRC restores AWM   y   n   n   y   n   n   n   n   n   n   n   n   n   n   n   n   n   n      
-DECRC restores !AWM  y   n   n   y   n   n   n   n   n   n   n   n   n   n   n   n   n   n      
+DECRC restores wrap  y   n   n   n   n   n   n   y   y   n   n   n   n   n   y   n   y   y   y  
+DECRC restores AWM   n   n   n   y   n   n   n   n   n   n   n   n   n   n   n   n   n   n      
+DECRC restores !AWM  n   n   n   y   n   n   n   n   n   n   n   n   n   n   n   n   n   n      
 
 Columns:
-XTe  XTerm 326
+XTe  XTerm 328
 Lin  Linux 2.6.39 console
 T.a  Terminal.app 2.6.1 (361.1)
 iT2  iTerm2 3.0.13
