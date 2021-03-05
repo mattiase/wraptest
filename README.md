@@ -111,8 +111,9 @@ them considerably. The VT220 appears to follow the specification to
 the letter, whereas the much more recent VT510 differs on a few
 points, perhaps on purpose.
 
-No emulator tested so far matches either actual hardware or the
-specification in STD-070, but some are clearly better than others.
+No emulator tested so far matches the specification in STD-070 and
+only recent XTerm versions appear to be faithful to actual hardware
+in this particular respect.
 
 # Test program
 
