@@ -1,9 +1,9 @@
-                     XTe Lin T.a iT2 st  GNO rxv cyg PuT Kon kte mlt urx mrx DEC 100 220 420 510
+                     XTe Lin T.a iT2 st  GNO rxv min PuT Kon kte mlt urx mrx DEC 100 220 420 510
 wrap works           y   y   y   y   y   y   y   y   y   y   y   y   y   y   y   y   y   y   y  
 wrap is deferred     y   y   y   y   y   y   y   y   y   y   y   y   y   y   y   y   y   y   y  
 CPR beyond last col  n   n   n   n   n   n   n   n   n   y   n   n   n   n   n   n   n   n   n  
 CR works at margin   y   y   y   y   y   y   y   y   y   y   y   y   y   y   y   y   y   y   y  
-BS works at margin   y   y   y   y   y   y   n   n   n   n   y   y   n   n   y   y   y   y   y  
+BS works at margin   y   y   y   y   y   y   n   y   n   n   y   y   n   n   y   y   y   y   y
 TAB wraps at margin  n   n   n   n   n   n   n   n   n   n   n   n   n   n   n   n   n   n   n  
 TAB cancels wrap     n   n   y   n   n   n   n   n   n   n   n   n   n   n   y   n   y   n   n  
 NL cancels wrap      y   y   y   n   y   y   y   y   y   n   y   y   y   y   y   n   y   y   y  
@@ -33,7 +33,7 @@ iT2  iTerm2 3.0.13
 st   suckless st 0.7
 GNO  GNOME-terminal 3.16.2 (VTE 0.40.3)
 rxv  rxvt 2.7.10
-cyg  cygwin mintty 1.0.3
+min  mintty 3.6.0
 PuT  PuTTY 0.67
 Kon  Konsole 1.6.4
 kte  kterm 6.2.0-46.2
@@ -48,15 +48,14 @@ DEC  architectural behaviour of DEC terminals (DEC STD-070)
 
 Notes:
 
-- mintty is based on PuTTY, so it is not surprising that the results are
-  identical.
-
-- rxvt, PuTTY and mintty all treat BS in the wrap state in the same way:
+- rxvt and PuTTY treat BS in the wrap state in the same way:
   no cursor movement (the BS is "absorbed"), but wrap state is cancelled.
   When the cursor is changed from a block to a vertical line, the wrap
   state is indicated by a cursor position to the right of the last column.
   It is still reported (by CPR) as being in the last column, however,
   and EL 0 still clears the last column of that line.
+  This is true for mintty as well (being derived from PuTTY) but it
+  handles BS correctly.
  
 - GNOME-terminal's EL behaviour is an explicit hack to work around a
   problem with GNU grep, which sometimes emits EL in the wrap state
