@@ -9,12 +9,12 @@ knowledge.
 
 Terminal emulators, like
 [XTerm](http://invisible-island.net/xterm/xterm.html) and
-[PuTTY](http://www.putty.org), usually try to follow the behaviour of
-the original hardware as closely as possible. Since the rules are
-rarely documented and genuine hardware sometimes difficult to get hold of,
-emulator authors resort to guessing or inventing their own rules,
-something that does not necessarily serve the best interest of their
-users.
+[PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/), usually
+try to follow the behaviour of the original hardware as closely as
+possible. Since the rules are rarely documented and genuine hardware
+sometimes difficult to get hold of, emulator authors resort to
+guessing or inventing their own rules, something that does not
+necessarily serve the best interest of their users.
 
 The sources for the following text are the actual terminals and DEC's
 internal reference documentation [DEC STD-070 Video Systems Reference
