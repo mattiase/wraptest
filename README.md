@@ -1,6 +1,6 @@
 # DEC VT terminal line-wrapping semantics
 
-One aspect of [DEC VT terminals](http://vt100.net), such as the
+One aspect of [DEC VT terminals](https://vt100.net), such as the
 [VT100](https://en.wikipedia.org/wiki/VT100) and
 [VT220](https://en.wikipedia.org/wiki/VT220), that keeps puzzling
 users is what happens when text goes beyond the edge of a line into
@@ -8,7 +8,7 @@ the next. It turns out that the exact details are not common
 knowledge.
 
 Terminal emulators, like
-[XTerm](http://invisible-island.net/xterm/xterm.html) and
+[XTerm](https://invisible-island.net/xterm/xterm.html) and
 [PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/), usually
 try to follow the behaviour of the original hardware as closely as
 possible. Since the rules are rarely documented and genuine hardware
@@ -18,7 +18,7 @@ necessarily serve the best interest of their users.
 
 The sources for the following text are the actual terminals and DEC's
 internal reference documentation [DEC STD-070 Video Systems Reference
-Manual](http://bitsavers.trailing-edge.com/pdf/dec/standards/EL-SM070-00_DEC_STD_070_Video_Systems_Reference_Manual_Dec91.pdf)
+Manual](https://bitsavers.trailing-edge.com/pdf/dec/standards/EL-SM070-00_DEC_STD_070_Video_Systems_Reference_Manual_Dec91.pdf)
 (71 MB).
 
 ## Basic VT line-wrapping rules
